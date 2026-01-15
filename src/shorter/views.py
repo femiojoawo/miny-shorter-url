@@ -11,7 +11,7 @@ def shorturl(request):
         form = ShorterUrlForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            short = ShortUrl.objects.create(true_url=form.cleaned_data["url"], short_url= shorter_algo(form.cleaned_data["url"]))
+            short = ShortUrl.objects.create(true_url=form.cleaned_data["url"], short_suffix= shorter_algo(form.cleaned_data["url"]))
             short.save()
     else:
         form = ShorterUrlForm()
@@ -19,5 +19,5 @@ def shorturl(request):
     return render(request,'shorter/index.html',context)
 
 def reverse_url(request,url):
-    short = get_object_or_404(ShortUrl, short_url = url)
+    short = get_object_or_404(ShortUrl, short_suffix = url)
     return  HttpResponseRedirect(short.true_url)
