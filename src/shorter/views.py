@@ -20,4 +20,6 @@ def shorturl(request):
 
 def reverse_url(request,url):
     short = get_object_or_404(ShortUrl, short_suffix = url)
+    short.num_use += 1
+    short.save()
     return  HttpResponseRedirect(short.true_url)
