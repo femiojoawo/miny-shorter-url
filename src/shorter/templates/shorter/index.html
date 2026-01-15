@@ -1,1 +1,12 @@
 {% extends "base_index.html" %}
+
+{% block content %}
+<section>
+    <form action="{% url 'index-short' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">short</button>
+    </form>
+    
+</section>
+{% endblock %}
