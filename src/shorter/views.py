@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from shorter.form import ShorterUrlForm
 from shorter.models import ShortUrl
 from shorter.shorter_algo import shorter_algo
@@ -16,3 +17,7 @@ def shorturl(request):
         form = ShorterUrlForm()
     context = {"form":form}
     return render(request,'shorter/index.html',context)
+
+def reverse_url(request,url):
+    short = get_object_or_404(ShortUrl, short_url = url)
+    return  HttpResponseRedirect(short.true_url)
