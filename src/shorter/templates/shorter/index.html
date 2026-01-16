@@ -6,6 +6,15 @@
         {% csrf_token %}
         {{ form }}
         <button type="submit">short</button>
+        <div>
+            {% if info == "l'url existe deja" %}
+                <p>{{ info }} : <a href="{{ reverse_url }}">{{ reverse_url }}</a></p>
+            {% endif %}
+            {% if info != "l'url existe deja" %}
+                <p> Url racourcie <a href="{{ info }}">{{ info }}</a></p>
+            {% endif %}
+
+        </div>
     </form>
     
 </section>
