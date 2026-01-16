@@ -11,7 +11,8 @@ def shorturl(request):
         form = ShorterUrlForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            short = ShortUrl.objects.create(true_url=form.cleaned_data["url"], short_suffix= shorter_algo(form.cleaned_data["url"]))
+            
+            short = ShortUrl.objects.get_or_create(true_url=form.cleaned_data["url"], short_suffix= shorter_algo(form.cleaned_data["url"]))
             short.save()
     else:
         form = ShorterUrlForm()

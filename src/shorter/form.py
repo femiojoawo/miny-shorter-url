@@ -9,4 +9,4 @@ class ShorterUrlForm(forms.Form):
     #         if requests.get(self.cleaned_data['url']).status_code != 200:
     #             raise forms.ValidationError("l'URL n'est pas valide !")
     #     except:
-    #         raise forms.ValidationError("l'URL n'est pas valide !")
+    #         raise forms.ValidationError("Connection Error !")
