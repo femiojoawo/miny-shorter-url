@@ -3,6 +3,7 @@ import requests
 
 class ShorterUrlForm(forms.Form):
     url = forms.URLField(required=True)
+    slug = forms.CharField(required=True)
 
     # def clean_url(self):
     #     try:

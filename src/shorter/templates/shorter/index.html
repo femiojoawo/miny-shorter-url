@@ -7,13 +7,13 @@
         {{ form }}
         <button type="submit">short</button>
         <div>
-            {% if info == "l'url existe deja" %}
-                <p>{{ info }} : <a href="{{ reverse_url }}">{{ reverse_url }}</a></p>
+            {% if url_exist %}
+                <p> url deja raccourcie : <a href="{{ reverse_url }}">{{ reverse_url }}</a></p>
             {% endif %}
-            {% if info != "l'url existe deja" %}
-                <p> Url racourcie <a href="{{ info }}">{{ info }}</a></p>
+            {% if not url_exist %}
+                <p> Url racourcie <a href="{{ reverse_url }}">{{ reverse_url }}</a></p>
             {% endif %}
-
+            
         </div>
     </form>
     
